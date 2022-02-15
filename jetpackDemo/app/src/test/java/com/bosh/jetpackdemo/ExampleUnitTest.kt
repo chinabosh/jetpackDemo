@@ -1,4 +1,4 @@
-package com.bosh.jecpackdemo
+package com.bosh.jetpackdemo
 
 import org.junit.Test
 

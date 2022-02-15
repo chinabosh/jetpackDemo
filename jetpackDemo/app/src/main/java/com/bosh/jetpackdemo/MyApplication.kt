@@ -1,4 +1,4 @@
-package com.bosh.jecpackdemo
+package com.bosh.jetpackdemo
 
 import androidx.multidex.MultiDexApplication
 import dagger.hilt.android.HiltAndroidApp
