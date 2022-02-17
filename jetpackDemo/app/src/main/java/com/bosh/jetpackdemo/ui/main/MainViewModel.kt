@@ -1,5 +1,7 @@
 package com.bosh.jetpackdemo.ui.main
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -10,4 +12,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class MainViewModel @Inject constructor() : ViewModel() {
+    private var _test : MutableLiveData<Int> = MutableLiveData(0)
+    val test : LiveData<Int>
+    get() = _test
 }
