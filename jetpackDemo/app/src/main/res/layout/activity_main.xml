@@ -26,10 +26,11 @@
             android:id="@+id/bnv_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             app:layout_constraintTop_toBottomOf="@id/nav_host_fragment"
             app:layout_constraintBottom_toBottomOf="parent"
             app:itemTextColor="@color/sel_bottom_text"
-            app:itemBackground="@color/black"
+            app:itemBackground="@color/white"
             app:itemIconTint="@color/sel_bottom_text"
             app:menu="@menu/main_bottom_menu"/>
 
