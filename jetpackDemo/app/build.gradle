@@ -15,7 +15,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.bosh.jecpackdemo"
+        applicationId "com.bosh.jetpackdemo"
         minSdk 21
         targetSdk 31
         versionCode 1
@@ -60,6 +60,7 @@ dependencies {
     //依赖注入
     implementation 'com.google.dagger:hilt-android:2.40.5'
     kapt 'com.google.dagger:hilt-android-compiler:2.40.5'
+    implementation 'javax.annotation:javax.annotation-api:1.2'
 
     implementation 'androidx.multidex:multidex:2.0.1'
 
@@ -94,6 +95,7 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:$arch_version")
 
     //初始化sdk组件
+    //一般用于sdk中，不推荐在app中使用，因contentProvider启动还是挺耗时的
     implementation "androidx.startup:startup-runtime:1.1.1"
 
     //启动动画
@@ -111,4 +113,9 @@ dependencies {
 
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:2.5.0-alpha01")
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.3.0'
 }
