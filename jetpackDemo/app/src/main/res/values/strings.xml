@@ -6,4 +6,5 @@
     <string name="text_mine">我的</string>
     <string name="text_random_text">随机字符串</string>
     <string name="hint_random_text_test">随机字符串测试</string>
+    <string name="text_message">消息</string>
 </resources>

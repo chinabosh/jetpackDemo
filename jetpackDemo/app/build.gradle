@@ -9,6 +9,8 @@ plugins {
 def lifecycle_version = "2.5.0-alpha02"
 def arch_version = "2.1.0"
 def nav_version = "2.4.0"
+def paging_version = "3.1.0"
+def roomVersion = "2.4.1"
 
 android {
     compileSdk 31
@@ -64,6 +66,7 @@ dependencies {
 
     implementation 'androidx.multidex:multidex:2.0.1'
 
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
 
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
@@ -118,4 +121,18 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.3.0'
+
+    //paging
+    implementation("androidx.paging:paging-runtime:$paging_version")
+
+    //room
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$roomVersion")
+    // optional - Test helpers
+    testImplementation("androidx.room:room-testing:$roomVersion")
+    // optional - Paging 3 Integration
+    implementation("androidx.room:room-paging:2.4.1")
+
 }

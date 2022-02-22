@@ -8,6 +8,10 @@
         android:id="@+id/navHomeFragment"
         android:name="com.bosh.jetpackdemo.ui.main.home.HomeFragment"
         tools:layout="@layout/fragment_home"/>
+    <fragment
+        android:id="@+id/navMessageFragment"
+        android:name="com.bosh.jetpackdemo.ui.main.message.MessageFragment"
+        tools:layout="@layout/fragment_message"/>
     <fragment android:id="@+id/navMineFragment"
         android:name="com.bosh.jetpackdemo.ui.main.mine.MineFragment"
         tools:layout="@layout/fragment_mine"/>
