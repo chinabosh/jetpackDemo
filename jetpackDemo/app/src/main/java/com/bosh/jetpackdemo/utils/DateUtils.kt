@@ -19,7 +19,7 @@ object DateUtils {
             -1L -> "loading"
             in 0..10 * 1000 -> "刚刚"
             in 10001 until 24 * 60 * 60 * 1000 ->
-                SimpleDateFormat("mm:ss", Locale.CHINA).format(times)
+                SimpleDateFormat("HH:mm", Locale.CHINA).format(times)
             in 24 * 60 * 60 * 1000 + 1 until 2 * 24 * 60 * 60 * 1000 -> "昨天"
             else -> SimpleDateFormat("yy-MM-dd", Locale.CHINA).format(times)
         }

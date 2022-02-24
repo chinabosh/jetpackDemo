@@ -12,8 +12,10 @@ import com.bosh.jetpackdemo.R
 import com.bosh.jetpackdemo.databinding.FragmentMessageBinding
 import com.bosh.jetpackdemo.extension.bindView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.observeOn
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MessageFragment : Fragment(R.layout.fragment_message) {
@@ -31,6 +33,12 @@ class MessageFragment : Fragment(R.layout.fragment_message) {
         binding.tvTest.setOnClickListener {
             viewModel.getTestData()
         }
+        binding.tvPrefill.setOnClickListener {
+            viewModel.saveTestDataToDb()
+        }
+        binding.tvDatabase.setOnClickListener {
+            viewModel.getDbData()
+        }
         binding.srlMain.setOnRefreshListener { mAdapter.refresh() }
         binding.rvMain.adapter = mAdapter
         lifecycleScope.launchWhenCreated {
@@ -40,6 +48,11 @@ class MessageFragment : Fragment(R.layout.fragment_message) {
         }
         lifecycleScope.launchWhenCreated {
             viewModel.testData.collectLatest {
+                mAdapter.submitData(it)
+            }
+        }
+        lifecycleScope.launchWhenCreated {
+            viewModel.dbData.collectLatest {
                 mAdapter.submitData(it)
             }
         }
