@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">jecpackDemo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_home">首页</string>
+    <string name="text_mine">我的</string>
+    <string name="text_random_text">随机字符串</string>
+    <string name="hint_random_text_test">随机字符串测试</string>
+    <string name="text_message">消息</string>
+    <string name="text_obtain_database_data">获取数据库数据</string>
+    <string name="text_prefill_database">预存数据库数据</string>
+    <string name="text_obtain_test_data">获取测试数据</string>
 </resources>

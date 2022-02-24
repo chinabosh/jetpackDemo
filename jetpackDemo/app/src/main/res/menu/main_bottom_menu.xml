@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/navHomeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="@string/text_home"/>
+
+    <item android:id="@+id/navMessageFragment"
+        android:icon="@drawable/ic_message"
+        android:title="@string/text_message"/>
+
+    <item android:id="@+id/navMineFragment"
+        android:icon="@drawable/ic_mine"
+        android:title="@string/text_mine"/>
+
+</menu>

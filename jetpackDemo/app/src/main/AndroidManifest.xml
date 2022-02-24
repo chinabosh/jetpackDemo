@@ -4,23 +4,32 @@
     package="com.bosh.jetpackdemo">
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.JecpackDemo">
+        android:theme="@style/Theme.AppSplashScreen">
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!-- startup setting -->
         <provider
-            tools:replace="android:authorities"
-            android:authorities="com.bosh.jetpackdemo.start-up"
             android:name="androidx.startup.InitializationProvider"
+            android:authorities="com.bosh.jetpackdemo.start-up"
             android:exported="false"
-            tools:node="merge">
+            tools:node="merge"
+            tools:replace="android:authorities">
             <meta-data
                 android:name="com.bosh.jetpackdemo.init.TestInitialization"
-                android:value="androidx.startup"/>
+                android:value="androidx.startup" />
         </provider>
     </application>
 
