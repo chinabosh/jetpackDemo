@@ -22,7 +22,7 @@ class MessageViewModel @Inject constructor(
 
     private val _testData: MutableLiveData<Int> = MutableLiveData()
     val testData = _testData.asFlow().flatMapLatest {
-        repository.getTestData()
+        repository.getTestData().flowOn(Dispatchers.IO)
     }.cachedIn(viewModelScope)
 
     private val _dbData: MutableLiveData<Int> = MutableLiveData()

@@ -1,4 +1,6 @@
-#TODO list
-- [ ] Okhttp
-- [ ] Retrofit-coroutines
-- [ ] Paging
+# TODO list
+- [x] Retrofit-coroutines
+- [x] Paging
+- [ ] ffmpeg play video
+    - [ ] compile ffmpeg
+    - [ ] create surfaceView

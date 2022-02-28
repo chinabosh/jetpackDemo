@@ -11,8 +11,8 @@ jetpack
 | [paging][paging] | 3.1.0 | 使用 Paging 库，您可以更轻松地在应用的 RecyclerView 中逐步妥善地加载数据。 
 | [room][room] | 2.4.1 | Room 持久性库在 SQLite 的基础上提供了一个抽象层，让用户能够在充分利用 SQLite 的强大功能的同时，获享更强健的数据库访问机制。
 
-##参考项目
-[MVVM-Architecture](https://github.com/qingmei2/MVVM-Architecture)
+## 参考项目
+[MVVM-Architecture](https://github.com/qingmei2/MVVM-Architecture)   
 [android-architecture-components](https://github.com/googlesamples/android-architecture-components)
 
 [startup]: https://developer.android.google.cn/jetpack/androidx/releases/startup
