@@ -29,6 +29,16 @@ object DbModule {
 
     private val migration_1_2 = Migration(1,2) {
         //升级操作
-//        it.execSQL("")
+        it.execSQL("create table `oil_price` (" +
+                "`id` INTEGER KEY AUTOINCREMENT NOT NULL, " +
+                "`city` TEXT NOT NULL," +
+                "`ninetyTwo` TEXT NOT NULL," +
+                "`ninetyFive` TEXT NOT NULL," +
+                "`ninetyEight` TEXT NOT NULL, " +
+                "`zero` TEXT NOT NULL, " +
+                "`time` TEXT NOT NULL, " +
+                "PRIMARY KEY(`id`)" +
+                ")")
+        it.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_oil_price_city_time` ON `oil_price` (`city`, `time`)")
     }
 }

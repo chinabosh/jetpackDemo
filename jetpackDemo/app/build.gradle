@@ -34,6 +34,16 @@ android {
                         "room.expandProjection":"true"]
             }
         }
+
+        Properties properties = new Properties()
+        File file = project.rootProject.file('local.properties')
+        if (file != null && file.exists()) {
+            properties.load(file.newDataInputStream())
+            buildConfigField "String", "OIL_KEY", properties.getProperty("oil_key")
+        } else {
+            // add this line just for oil key.
+            buildConfigField "String", "OIL_KEY", "\"TODO: set oil_key at local.properties\""
+        }
     }
 
     buildTypes {
@@ -143,5 +153,8 @@ dependencies {
     testImplementation("androidx.room:room-testing:$roomVersion")
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:2.4.1")
+
+    implementation("com.afollestad.material-dialogs:core:3.1.0")
+    implementation("com.afollestad.material-dialogs:datetime:3.1.0")
 
 }

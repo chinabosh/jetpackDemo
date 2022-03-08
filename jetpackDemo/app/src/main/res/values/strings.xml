@@ -10,4 +10,9 @@
     <string name="text_obtain_database_data">获取数据库数据</string>
     <string name="text_prefill_database">预存数据库数据</string>
     <string name="text_obtain_test_data">获取测试数据</string>
+
+    <string name="hint_choose">请选择</string>
+    <string name="text_sure">确定</string>
+    <string name="text_province">省份</string>
+    <string name="text_date">日期</string>
 </resources>

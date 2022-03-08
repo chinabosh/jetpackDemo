@@ -24,4 +24,14 @@ object DateUtils {
             else -> SimpleDateFormat("yy-MM-dd", Locale.CHINA).format(times)
         }
     }
+
+    fun getCurDay(): String {
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
+        return simpleDateFormat.format(System.currentTimeMillis())
+    }
+
+    fun getDate(dateTime: Calendar): String {
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
+        return simpleDateFormat.format(dateTime.timeInMillis)
+    }
 }

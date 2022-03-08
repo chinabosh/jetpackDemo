@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 1,
-    "identityHash": "a3ad4e3630ca46b331e43752f9b23a91",
+    "version": 2,
+    "identityHash": "fbcf34c0992dcf9f5d27b9a752fafa3b",
     "entities": [
       {
         "tableName": "message_info",
@@ -56,7 +56,7 @@
       },
       {
         "tableName": "oil_price",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `city` TEXT NOT NULL, `ninetyTwo` TEXT NOT NULL, `ninetyFive` TEXT NOT NULL, `ninetyEight` TEXT NOT NULL, `zero` TEXT NOT NULL, `time` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `city` TEXT NOT NULL, `ninetyTwo` TEXT NOT NULL, `ninetyFive` TEXT NOT NULL, `ninetyEight` TEXT NOT NULL, `zero` TEXT NOT NULL, `time` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -105,16 +105,27 @@
           "columnNames": [
             "id"
           ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_oil_price_city_time",
+            "unique": true,
+            "columnNames": [
+              "city",
+              "time"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_oil_price_city_time` ON `${TABLE_NAME}` (`city`, `time`)"
+          }
+        ],
         "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a3ad4e3630ca46b331e43752f9b23a91')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fbcf34c0992dcf9f5d27b9a752fafa3b')"
     ]
   }
 }

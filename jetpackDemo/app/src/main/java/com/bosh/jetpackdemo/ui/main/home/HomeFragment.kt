@@ -1,5 +1,6 @@
 package com.bosh.jetpackdemo.ui.main.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,6 +12,7 @@ import androidx.lifecycle.Observer
 import com.bosh.jetpackdemo.R
 import com.bosh.jetpackdemo.databinding.FragmentHomeBinding
 import com.bosh.jetpackdemo.extension.bindView
+import com.bosh.jetpackdemo.ui.oil.price.OilPriceActivity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -27,6 +29,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         Log.e("test", "onViewCreated")
         binding.tvRandom.setOnClickListener{
             viewModel.randomText()
+        }
+        binding.tvOilPrice.setOnClickListener {
+            startActivity(Intent(activity, OilPriceActivity::class.java))
         }
         viewModel.text.observe(this, {
             binding.etTest.setText(it)

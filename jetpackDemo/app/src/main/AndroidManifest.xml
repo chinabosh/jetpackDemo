@@ -3,24 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bosh.jetpackdemo">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppSplashScreen">
+        android:theme="@style/Theme.JetpackDemo">
+        <activity
+            android:name=".ui.oil.price.OilPriceActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.main.MainActivity"
+            android:theme="@style/Theme.AppSplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- startup setting -->
+        </activity> <!-- startup setting -->
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.bosh.jetpackdemo.start-up"

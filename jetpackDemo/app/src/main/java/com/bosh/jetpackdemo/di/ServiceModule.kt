@@ -1,5 +1,8 @@
 package com.bosh.jetpackdemo.di
 
+import com.bosh.jetpackdemo.di.qualifier.CommonRetrofit
+import com.bosh.jetpackdemo.di.qualifier.OilRetrofit
+import com.bosh.jetpackdemo.net.OilService
 import com.bosh.jetpackdemo.net.ServiceManager
 import com.bosh.jetpackdemo.net.UserService
 import dagger.Module
@@ -18,13 +21,19 @@ import javax.inject.Singleton
 class ServiceModule {
     @Provides
     @Singleton
-    fun providerUserService(retrofit: Retrofit) : UserService {
+    fun providerUserService(@CommonRetrofit retrofit: Retrofit): UserService {
         return retrofit.create(UserService::class.java)
     }
 
     @Provides
     @Singleton
-    fun providerServiceManager(userService: UserService) : ServiceManager {
-        return ServiceManager(userService)
+    fun providerServiceManager(userService: UserService, oilService: OilService): ServiceManager {
+        return ServiceManager(userService, oilService)
+    }
+
+    @Provides
+    @Singleton
+    fun providerOilService(@OilRetrofit retrofit: Retrofit): OilService {
+        return retrofit.create(OilService::class.java)
     }
 }

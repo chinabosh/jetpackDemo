@@ -5,6 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.home.HomeFragment">
 
+    <TextView
+        android:id="@+id/tv_oil_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:padding="10dp"
+        android:text="今日油价"
+        android:textSize="18sp"
+        android:textColor="@color/purple_200"
+        android:background="@drawable/bg_white_corner"/>
+
+
     <EditText
         android:id="@+id/et_test"
         android:layout_width="wrap_content"
