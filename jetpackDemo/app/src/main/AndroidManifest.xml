@@ -3,8 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bosh.jetpackdemo">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
     <application
         android:name=".MyApplication"
         android:allowBackup="false"
@@ -15,12 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackDemo">
         <activity
+            android:name=".ui.oil.history.AddOilHistoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.oil.add.AddOilRecordActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.oil.price.OilPriceActivity"
             android:exported="true" />
         <activity
             android:name=".ui.main.MainActivity"
-            android:theme="@style/Theme.AppSplashScreen"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.AppSplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +40,27 @@
             <meta-data
                 android:name="com.bosh.jetpackdemo.init.TestInitialization"
                 android:value="androidx.startup" />
+
+<!--            <meta-data-->
+<!--                android:name="androidx.work.impl.WorkManagerInitializer"-->
+<!--                android:value="androidx.startup"-->
+<!--                tools:node="remove" />-->
         </provider>
+
+<!--        <provider-->
+<!--            android:name="androidx.startup.InitializationProvider"-->
+<!--            android:authorities="${applicationId}.androidx-startup"-->
+<!--            tools:node="remove">-->
+<!--        </provider>-->
+
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="${applicationId}.workmanager-init"
+            tools:node="remove"/>
+
+
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

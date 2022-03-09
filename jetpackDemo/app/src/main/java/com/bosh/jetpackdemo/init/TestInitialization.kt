@@ -3,6 +3,11 @@ package com.bosh.jetpackdemo.init
 import android.content.Context
 import android.util.Log
 import androidx.startup.Initializer
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import com.bosh.jetpackdemo.work.OilPriceWorker
+import java.util.concurrent.TimeUnit
 
 /**
  * @author lzq

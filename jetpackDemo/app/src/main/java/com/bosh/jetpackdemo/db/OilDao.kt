@@ -16,6 +16,9 @@ interface OilDao {
     @Query("select * from oil_price where (:day ='' or time = :day) and (:city = '' or city = :city) order by id")
     fun getOilPrice(day: String, city: String): PagingSource<Int, OilPrice>
 
+    @Query("select * from oil_price where (:day = '' or time = :day) order by id")
+    fun getOilPrice(day: String): List<OilPrice>
+
     @Query("select count(*) from oil_price where time = :day")
     fun getOilPriceCount(day: String): Int
 

@@ -16,8 +16,8 @@ import javax.inject.Inject
  * @date  2022/3/7
  */
 class OilRepository @Inject constructor(
-    private val localDataSource: LocalDataSource,
-    private val remoteDataSource: RemoteDataSource
+    private val localDataSource: OilLocalDataSource,
+    private val remoteDataSource: OilRemoteDataSource
 ) {
     @OptIn(ExperimentalPagingApi::class)
     fun getTodayOilPrice(day: String, city: String): Flow<PagingData<OilPrice>> {
@@ -30,7 +30,7 @@ class OilRepository @Inject constructor(
     }
 }
 
-class LocalDataSource @Inject constructor(
+class OilLocalDataSource @Inject constructor(
     private val db: AppDatabase
 ) {
     fun getTodayOilPrice(day: String, city: String): PagingSource<Int, OilPrice> {
@@ -44,12 +44,16 @@ class LocalDataSource @Inject constructor(
     fun hasTodayOilPrice(day: String): Boolean {
         return db.oilDao().getOilPriceCount(day) > 0
     }
+
+    fun getTodayOilPrice(day: String): List<OilPrice> {
+        return db.oilDao().getOilPrice(day)
+    }
 }
 
 @ExperimentalPagingApi
 class OilRemoteMediator constructor(
-    private val remoteDataSource: RemoteDataSource,
-    private val localDataSource: LocalDataSource,
+    private val remoteDataSource: OilRemoteDataSource,
+    private val localDataSource: OilLocalDataSource,
     private val day: String
 ) : RemoteMediator<Int, OilPrice>() {
 
@@ -97,7 +101,7 @@ class OilRemoteMediator constructor(
 
 }
 
-class RemoteDataSource @Inject constructor(
+class OilRemoteDataSource @Inject constructor(
     private val serviceManager: ServiceManager
 ) {
     suspend fun getTodayOilPrice(): List<OilPrice> {

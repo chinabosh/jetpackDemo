@@ -8,6 +8,9 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.datetime.datePicker
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
@@ -16,11 +19,13 @@ import com.bosh.jetpackdemo.databinding.ActivityOilPriceBinding
 import com.bosh.jetpackdemo.extension.inflate
 import com.bosh.jetpackdemo.utils.DateUtils
 import com.bosh.jetpackdemo.utils.Mapper
+import com.bosh.jetpackdemo.work.OilPriceWorker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class OilPriceActivity : AppCompatActivity() {
@@ -89,6 +94,12 @@ class OilPriceActivity : AppCompatActivity() {
             }.collectLatest {
                 mAdapter.submitData(it)
             }
+        }
+        lifecycleScope.launchWhenCreated {
+            val request = PeriodicWorkRequestBuilder<OilPriceWorker>(6, TimeUnit.HOURS).build()
+            WorkManager.getInstance(this@OilPriceActivity)
+                .enqueueUniquePeriodicWork("oil_price",
+                    ExistingPeriodicWorkPolicy.KEEP, request)
         }
     }
 }
