@@ -23,7 +23,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object HttpModule {
 
-    const val url = "https://www.baidu.com"
+    private const val url = "https://www.baidu.com"
 
     @Provides
     @Singleton

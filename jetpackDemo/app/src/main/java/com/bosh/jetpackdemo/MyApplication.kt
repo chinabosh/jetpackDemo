@@ -3,7 +3,6 @@ package com.bosh.jetpackdemo
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.multidex.MultiDexApplication
 import androidx.work.Configuration
-import androidx.work.WorkerFactory
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 

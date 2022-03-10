@@ -1,12 +1,11 @@
 package com.bosh.jetpackdemo.ui.oil.price
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
@@ -14,7 +13,6 @@ import androidx.work.WorkManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.datetime.datePicker
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
-import com.bosh.jetpackdemo.R
 import com.bosh.jetpackdemo.databinding.ActivityOilPriceBinding
 import com.bosh.jetpackdemo.extension.inflate
 import com.bosh.jetpackdemo.utils.DateUtils
@@ -42,11 +40,11 @@ class OilPriceActivity : AppCompatActivity() {
 
     private fun init() {
         binding.layoutMain.ivFilter.setOnClickListener {
-            binding.dlMain.openDrawer(Gravity.RIGHT)
+            binding.dlMain.openDrawer(GravityCompat.END)
         }
         binding.layoutMain.ivBack.setOnClickListener { finish() }
         binding.layoutFilter.tvFilterSure.setOnClickListener {
-            binding.dlMain.closeDrawer(Gravity.RIGHT)
+            binding.dlMain.closeDrawer(GravityCompat.END)
             lifecycleScope.launch {
                 val prov = binding.layoutFilter.tvProvince.text.toString()
                 filter = Filter(
@@ -96,7 +94,9 @@ class OilPriceActivity : AppCompatActivity() {
             }
         }
         lifecycleScope.launchWhenCreated {
-            val request = PeriodicWorkRequestBuilder<OilPriceWorker>(6, TimeUnit.HOURS).build()
+            val request = PeriodicWorkRequestBuilder<OilPriceWorker>(15, TimeUnit.MINUTES)
+                .addTag("test")
+                .build()
             WorkManager.getInstance(this@OilPriceActivity)
                 .enqueueUniquePeriodicWork("oil_price",
                     ExistingPeriodicWorkPolicy.KEEP, request)

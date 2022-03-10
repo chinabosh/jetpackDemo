@@ -4,18 +4,12 @@ import android.content.Context
 import android.util.Log
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
-import androidx.work.Worker
 import androidx.work.WorkerParameters
-import androidx.work.impl.workers.CombineContinuationsWorker
 import com.bosh.jetpackdemo.db.AppDatabase
 import com.bosh.jetpackdemo.net.ServiceManager
-import com.bosh.jetpackdemo.ui.oil.price.OilLocalDataSource
-import com.bosh.jetpackdemo.ui.oil.price.OilRemoteDataSource
 import com.bosh.jetpackdemo.utils.DateUtils
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import kotlinx.coroutines.coroutineScope
-import java.lang.Exception
 
 /**
  * 定时任务获取油价
@@ -32,11 +26,14 @@ class OilPriceWorker @AssistedInject  constructor(
     override suspend fun doWork(): Result {
         Log.i("oilPriceWorker", "doWork")
         val curDay = DateUtils.getCurDay()
-        var data = db.oilDao().getOilPrice(curDay)
+        val data = db.oilDao().getOilPrice(curDay)
         if (data.isEmpty()) {
             Log.i("oilPriceWorker", "get from remote")
             val wrapper = serviceManager.oilService.getTodayOilPrice()
             if (wrapper.error_code == 0) {
+                wrapper.result.forEach {
+                    it.time = curDay
+                }
                 db.oilDao().insertAll(wrapper.result)
             } else {
                 Result.failure()

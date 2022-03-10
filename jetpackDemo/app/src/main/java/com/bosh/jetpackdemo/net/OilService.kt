@@ -1,10 +1,8 @@
 package com.bosh.jetpackdemo.net
 
 import com.bosh.jetpackdemo.BuildConfig
-import com.bosh.jetpackdemo.entity.OilPrice
 import com.bosh.jetpackdemo.entity.OilPriceWrapper
 import retrofit2.http.GET
-import retrofit2.http.QueryName
 
 /**
  * @author lzq

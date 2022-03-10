@@ -1,14 +1,12 @@
 package com.bosh.jetpackdemo.ui.oil.price
 
 import androidx.paging.*
-import androidx.paging.RemoteMediator
 import com.bosh.jetpackdemo.db.AppDatabase
 import com.bosh.jetpackdemo.entity.OilPrice
 import com.bosh.jetpackdemo.ext.paging.globalPageConfig
 import com.bosh.jetpackdemo.net.ServiceManager
 import com.bosh.jetpackdemo.utils.DateUtils
 import kotlinx.coroutines.flow.Flow
-import java.lang.Exception
 import javax.inject.Inject
 
 /**
@@ -43,10 +41,6 @@ class OilLocalDataSource @Inject constructor(
 
     fun hasTodayOilPrice(day: String): Boolean {
         return db.oilDao().getOilPriceCount(day) > 0
-    }
-
-    fun getTodayOilPrice(day: String): List<OilPrice> {
-        return db.oilDao().getOilPrice(day)
     }
 }
 

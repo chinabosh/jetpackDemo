@@ -3,13 +3,11 @@ package com.bosh.jetpackdemo.ui.oil.price
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewParent
 import android.widget.TextView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bosh.jetpackdemo.R
-import com.bosh.jetpackdemo.entity.MessageInfo
 import com.bosh.jetpackdemo.entity.OilPrice
 
 /**

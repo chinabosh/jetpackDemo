@@ -5,6 +5,7 @@ import androidx.paging.cachedIn
 import com.bosh.jetpackdemo.entity.MessageInfo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOn
@@ -21,6 +22,7 @@ class MessageViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _testData: MutableLiveData<Int> = MutableLiveData()
+    @OptIn(ExperimentalCoroutinesApi::class)
     val testData = _testData.asFlow().flatMapLatest {
         repository.getTestData().flowOn(Dispatchers.IO)
     }.cachedIn(viewModelScope)

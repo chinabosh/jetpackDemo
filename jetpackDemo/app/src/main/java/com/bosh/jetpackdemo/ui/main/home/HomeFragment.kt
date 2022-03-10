@@ -3,18 +3,16 @@ package com.bosh.jetpackdemo.ui.main.home
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.work.WorkInfo
+import androidx.work.WorkManager
 import com.bosh.jetpackdemo.R
 import com.bosh.jetpackdemo.databinding.FragmentHomeBinding
 import com.bosh.jetpackdemo.extension.bindView
 import com.bosh.jetpackdemo.ui.oil.price.OilPriceActivity
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -36,5 +34,22 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewModel.text.observe(this, {
             binding.etTest.setText(it)
         })
+        binding.tvTest.setOnClickListener {
+            WorkManager.getInstance(context!!)
+                .getWorkInfosForUniqueWorkLiveData("oil_price")
+                .observe(this, {
+                    it.apply {
+                        when(this[0].state) {
+                            WorkInfo.State.BLOCKED -> println("BLOCKED")
+                            WorkInfo.State.CANCELLED -> println("CANCELLED")
+                            WorkInfo.State.RUNNING -> println("RUNNING")
+                            WorkInfo.State.ENQUEUED -> println("ENQUEUED")
+                            WorkInfo.State.FAILED -> println("FAILED")
+                            WorkInfo.State.SUCCEEDED -> println("SUCCEEDED")
+                            else -> println("else status ${this[0]}")
+                        }
+                    }
+                })
+        }
     }
 }
