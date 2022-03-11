@@ -28,6 +28,9 @@ class OilPriceViewModel @Inject constructor(
     }.cachedIn(viewModelScope)
 
     fun changeFilter(filter: Filter) {
+        if (filter.prov == "全部") {
+            filter.prov = ""
+        }
         _filter.postValue(filter)
     }
 }

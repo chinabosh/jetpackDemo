@@ -8,6 +8,7 @@ import androidx.work.WorkerParameters
 import com.bosh.jetpackdemo.db.AppDatabase
 import com.bosh.jetpackdemo.net.ServiceManager
 import com.bosh.jetpackdemo.utils.DateUtils
+import com.bosh.jetpackdemo.utils.LogUtils
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 
@@ -25,10 +26,12 @@ class OilPriceWorker @AssistedInject  constructor(
 ) : CoroutineWorker(context, parameters) {
     override suspend fun doWork(): Result {
         Log.i("oilPriceWorker", "doWork")
+        LogUtils.i2File("oilPriceWorker", "doWork")
         val curDay = DateUtils.getCurDay()
         val data = db.oilDao().getOilPrice(curDay)
         if (data.isEmpty()) {
             Log.i("oilPriceWorker", "get from remote")
+            LogUtils.i2File("oilPriceWorker", "get from remote")
             val wrapper = serviceManager.oilService.getTodayOilPrice()
             if (wrapper.error_code == 0) {
                 wrapper.result.forEach {

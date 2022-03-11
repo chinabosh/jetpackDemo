@@ -15,4 +15,9 @@
     <string name="text_sure">确定</string>
     <string name="text_province">省份</string>
     <string name="text_date">日期</string>
+
+    <string name="text_add_oil">加油</string>
+    <string name="text_init_mile">初始里程</string>
+    <string name="text_mile_unit">km</string>
+    <string name="hint_init_mile">请输入初始里程</string>
 </resources>

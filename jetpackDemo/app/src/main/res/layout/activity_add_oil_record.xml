@@ -6,4 +6,70 @@
     android:layout_height="match_parent"
     tools:context=".ui.oil.add.AddOilRecordActivity">
 
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            style="@style/title_back"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_add_oil"
+            style="@style/title_text"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/bg_white_corner"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/rl_title">
+
+        <TextView
+            android:id="@+id/tv_init_mile_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_init_mile"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <EditText
+            android:id="@+id/tv_init_mile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_init_mile"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_init_mile_label"
+            app:layout_constraintRight_toLeftOf="@+id/tv_init_mile_unit"
+            />
+
+        <TextView
+            android:id="@+id/tv_init_mile_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_mile_unit"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_init_mile_label"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="初始油量"
+            app:layout_constraintTop_toBottomOf="@id/tv_init_mile_label"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_init_mile_label"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

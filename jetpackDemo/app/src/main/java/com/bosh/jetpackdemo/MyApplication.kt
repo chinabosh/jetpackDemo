@@ -19,6 +19,7 @@ class MyApplication : MultiDexApplication() , Configuration.Provider{
     override fun getWorkManagerConfiguration(): Configuration {
         return Configuration.Builder()
             .setWorkerFactory(workerFactory)
+            .setMinimumLoggingLevel(android.util.Log.DEBUG)
             .build()
     }
 }

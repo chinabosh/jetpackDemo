@@ -49,11 +49,7 @@ class OilPriceActivity : AppCompatActivity() {
                 val prov = binding.layoutFilter.tvProvince.text.toString()
                 filter = Filter(
                     binding.layoutFilter.tvDate.text.toString(),
-                    if (prov == "全部"){
-                        ""
-                    } else{
-                        prov
-                    }
+                    prov
                 )
                 viewModel.changeFilter(filter)
             }

@@ -12,6 +12,7 @@ import com.bosh.jetpackdemo.R
 import com.bosh.jetpackdemo.databinding.FragmentHomeBinding
 import com.bosh.jetpackdemo.extension.bindView
 import com.bosh.jetpackdemo.ui.oil.price.OilPriceActivity
+import com.bosh.jetpackdemo.utils.LogUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,6 +36,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             binding.etTest.setText(it)
         })
         binding.tvTest.setOnClickListener {
+            LogUtils.i2File("homeFragment", "get work info")
             WorkManager.getInstance(context!!)
                 .getWorkInfosForUniqueWorkLiveData("oil_price")
                 .observe(this, {

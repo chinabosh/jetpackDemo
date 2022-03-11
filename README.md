@@ -13,14 +13,20 @@ jetpack
 | [work][work] | 2.5.0 | 使用 WorkManager API 可以轻松地调度那些必须可靠运行的可延期异步任务。通过这些 API，您可以创建任务并提交给 WorkManager，以便在满足工作约束条件时运行。
 
 ## 功能模块
-[油价]() :
+[油价](doc/oil.md)
 
 ## 参考项目
-[MVVM-Architecture](https://github.com/qingmei2/MVVM-Architecture)   
-[android-architecture-components](https://github.com/googlesamples/android-architecture-components)
+[MVVM-Architecture][MVVM-Architecture]
+[android-architecture-components][android-architecture-components]
 
 ## openApi
-[今日国内油价][油价]：每天50次免费调用
+[今日国内油价][油价API]：每天50次免费调用,需注册并实名认证
+
+## 参考文档
+[调试workManager][调试workManager]
+[使用 WorkManager 进行集成测试][使用 WorkManager 进行集成测试]
+[WorkManager: 周期性任务][WorkManager: 周期性任务]
+[WorkManager 最全攻略][WorkManager 最全攻略]
 
 [startup]: https://developer.android.google.cn/jetpack/androidx/releases/startup
 [lifecycle]: https://developer.android.google.cn/jetpack/androidx/releases/lifecycle
@@ -29,4 +35,10 @@ jetpack
 [paging]: https://developer.android.google.cn/jetpack/androidx/releases/paging?hl=zh_cn
 [room]: https://developer.android.google.cn/jetpack/androidx/releases/room?hl=zh_cn
 [work]: https://developer.android.google.cn/jetpack/androidx/releases/work?hl=zh_cn
-[油价]: https://www.juhe.cn/docs/api/id/540
+[油价API]: https://www.juhe.cn/docs/api/id/540
+[调试workManager]: https://developer.android.google.cn/topic/libraries/architecture/workmanager/how-to/debugging
+[使用 WorkManager 进行集成测试]: https://developer.android.google.cn/topic/libraries/architecture/workmanager/how-to/integration-testing
+[WorkManager: 周期性任务]: https://zhuanlan.zhihu.com/p/265051417?utm_source=wechat_session
+[WorkManager 最全攻略]: https://www.jianshu.com/p/6a72bcd25956
+[MVVM-Architecture]: https://github.com/qingmei2/MVVM-Architecture
+[android-architecture-components]: https://github.com/googlesamples/android-architecture-components
