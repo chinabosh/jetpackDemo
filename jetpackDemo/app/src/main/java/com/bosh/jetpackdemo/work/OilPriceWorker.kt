@@ -18,7 +18,7 @@ import dagger.assisted.AssistedInject
  * @date  2022/3/9
  */
 @HiltWorker
-class OilPriceWorker @AssistedInject  constructor(
+public class OilPriceWorker @AssistedInject  constructor(
     @Assisted context: Context,
     @Assisted parameters: WorkerParameters,
     private val db : AppDatabase,

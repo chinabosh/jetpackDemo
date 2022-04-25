@@ -141,7 +141,7 @@ dependencies {
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
 
     //paging
     implementation("androidx.paging:paging-runtime:$paging_version")
@@ -161,7 +161,8 @@ dependencies {
     implementation("com.afollestad.material-dialogs:datetime:3.1.0")
 
     //workManager
-    implementation "androidx.work:work-runtime-ktx:2.5.0"
-    androidTestImplementation("androidx.work:work-testing:2.5.0")
+    implementation "androidx.work:work-runtime-ktx:2.7.1"
+    implementation "androidx.work:work-runtime:2.7.1"
+    androidTestImplementation("androidx.work:work-testing:2.7.1")
 
 }

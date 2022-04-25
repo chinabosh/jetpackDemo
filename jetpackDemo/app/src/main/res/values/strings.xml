@@ -20,4 +20,14 @@
     <string name="text_init_mile">初始里程</string>
     <string name="text_mile_unit">km</string>
     <string name="hint_init_mile">请输入初始里程</string>
+    <string name="text_init_oil">初始油量</string>
+    <string name="hint_input_init_oil">请输入初始油量</string>
+    <string name="text_oil_unit">L</string>
+    <string name="text_cur_add_oil_info">本次加油</string>
+    <string name="hint_oil">0.00</string>
+    <string name="text_multi">x</string>
+    <string name="hint_input_oil_price">油价</string>
+    <string name="text_equal">=</string>
+    <string name="text_yuan">元</string>
+    <string name="text_add_oil_date">加油日期</string>
 </resources>

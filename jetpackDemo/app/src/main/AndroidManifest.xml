@@ -41,10 +41,24 @@
                 android:name="com.bosh.jetpackdemo.init.TestInitialization"
                 android:value="androidx.startup" />
 
-<!--            <meta-data-->
-<!--                android:name="androidx.work.impl.WorkManagerInitializer"-->
-<!--                android:value="androidx.startup"-->
-<!--                tools:node="remove" />-->
+<!--            解决：Could not instantiate com.bosh.jetpackdemo.work.OilPriceWorker-->
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+        </provider>
+
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <!-- If you are using androidx.startup to initialize other components -->
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
         </provider>
 
 <!--        <provider-->
@@ -53,10 +67,10 @@
 <!--            tools:node="remove">-->
 <!--        </provider>-->
 
-        <provider
-            android:name="androidx.work.impl.WorkManagerInitializer"
-            android:authorities="${applicationId}.workmanager-init"
-            tools:node="remove"/>
+<!--        <provider-->
+<!--            android:name="androidx.work.impl.WorkManagerInitializer"-->
+<!--            android:authorities="${applicationId}.workmanager-init"-->
+<!--            tools:node="remove"/>-->
 
 
     </application>

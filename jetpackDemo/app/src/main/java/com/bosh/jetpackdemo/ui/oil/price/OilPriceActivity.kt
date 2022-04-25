@@ -78,7 +78,11 @@ class OilPriceActivity : AppCompatActivity() {
             }
         }
         lifecycleScope.launchWhenCreated {
-            filter = Filter(DateUtils.getCurDay(), "福建")
+            val curDay = DateUtils.getCurDay()
+            binding.layoutFilter.tvDate.text = curDay
+            val prov = "福建"
+            binding.layoutFilter.tvProvince.text = prov
+            filter = Filter(curDay, prov)
             viewModel.changeFilter(filter)
         }
 
@@ -95,7 +99,7 @@ class OilPriceActivity : AppCompatActivity() {
                 .build()
             WorkManager.getInstance(this@OilPriceActivity)
                 .enqueueUniquePeriodicWork("oil_price",
-                    ExistingPeriodicWorkPolicy.KEEP, request)
+                    ExistingPeriodicWorkPolicy.REPLACE, request)
         }
     }
 }

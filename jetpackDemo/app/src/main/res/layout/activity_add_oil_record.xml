@@ -15,7 +15,8 @@
 
         <ImageView
             android:id="@+id/iv_back"
-            style="@style/title_back"/>
+            style="@style/title_back"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -28,6 +29,7 @@
     </RelativeLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_init"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -50,6 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/hint_init_mile"
+            android:inputType="number"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_init_mile_label"
             app:layout_constraintRight_toLeftOf="@+id/tv_init_mile_unit"
             />
@@ -63,13 +66,142 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_init_mile_label"/>
 
         <TextView
+            android:id="@+id/tv_init_oil_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="初始油量"
+            android:text="@string/text_init_oil"
             app:layout_constraintTop_toBottomOf="@id/tv_init_mile_label"
             app:layout_constraintLeft_toLeftOf="@+id/tv_init_mile_label"
             />
+
+        <EditText
+            android:id="@+id/et_init_oil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_input_init_oil"
+            android:inputType="number"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_init_oil_label"
+            app:layout_constraintRight_toLeftOf="@+id/tv_init_oil_unit"
+            />
+
+        <TextView
+            android:id="@+id/tv_init_oil_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_oil_unit"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_init_oil_label"
+            app:layout_constraintRight_toRightOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:background="@drawable/bg_white_corner"
+        app:layout_constraintTop_toBottomOf="@+id/cl_init">
+
+        <TextView
+            android:id="@+id/tv_cur_oil_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_cur_add_oil_info"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <EditText
+            android:id="@+id/et_oil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_oil"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_cur_oil_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cur_oil_label"/>
+
+        <TextView
+            android:id="@+id/tv_oil_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_oil_unit"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toRightOf="@+id/et_oil"
+            app:layout_constraintBaseline_toBaselineOf="@+id/et_oil"/>
+
+        <TextView
+            android:id="@+id/tv_multi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_multi"
+            android:textSize="20sp"
+            android:layout_marginLeft="15dp"
+            app:layout_constraintLeft_toRightOf="@+id/tv_oil_unit"
+            app:layout_constraintBaseline_toBaselineOf="@+id/et_oil"/>
+
+        <EditText
+            android:id="@+id/et_oil_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:hint="@string/hint_input_oil_price"
+            android:layout_marginLeft="15dp"
+            app:layout_constraintLeft_toRightOf="@+id/tv_multi"
+            app:layout_constraintBaseline_toBaselineOf="@+id/et_oil"/>
+
+        <TextView
+            android:id="@+id/tv_oil_price_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="元/L"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toRightOf="@+id/et_oil_price"
+            app:layout_constraintBaseline_toBaselineOf="@+id/et_oil"/>
+
+        <TextView
+            android:id="@+id/tv_equal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_equal"
+            android:layout_marginLeft="15dp"
+            app:layout_constraintLeft_toRightOf="@id/tv_oil_price_unit"
+            app:layout_constraintBaseline_toBaselineOf="@id/et_oil"/>
+
+        <EditText
+            android:id="@+id/et_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="总价(自动计算)"
+            android:inputType="number"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toRightOf="@+id/tv_equal"
+            app:layout_constraintBaseline_toBaselineOf="@+id/et_oil"/>
+        <TextView
+            android:id="@+id/tv_yuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_yuan"
+            app:layout_constraintLeft_toRightOf="@+id/et_amount"
+            app:layout_constraintBaseline_toBaselineOf="@+id/et_oil"/>
+
+        <TextView
+            android:id="@+id/tv_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_add_oil_date"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_cur_oil_label"
+            app:layout_constraintTop_toBottomOf="@+id/et_oil"/>
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_choose"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_date_label"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
