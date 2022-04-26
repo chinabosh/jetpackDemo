@@ -15,5 +15,10 @@ class AddOilRecordActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        init()
+    }
+
+    private fun init() {
+
     }
 }

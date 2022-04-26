@@ -202,6 +202,31 @@
             android:hint="@string/hint_choose"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_date_label"/>
+
+        <TextView
+            android:id="@+id/tv_mile_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_mile"
+            android:layout_marginTop="15dp"
+            app:layout_constraintLeft_toLeftOf="@id/tv_cur_oil_label"
+            app:layout_constraintTop_toBottomOf="@id/tv_date_label"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_please_input_cur_mile"
+            app:layout_constraintRight_toLeftOf="@+id/tv_mile_unit"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_mile_label"/>
+
+
+        <TextView
+            android:id="@+id/tv_mile_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_mile_unit"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_mile_label"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

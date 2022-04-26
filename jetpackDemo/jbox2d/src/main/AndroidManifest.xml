@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bosh.player_lib">
+    package="com.bosh.jboxtwod">
 
     <application>
         <activity
-            android:name=".MainActivity"
+            android:name="com.bosh.jboxtwod.JboxTwodActivity"
             android:exported="true" />
     </application>
 

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
+import com.bosh.jboxtwod.JboxTwodActivity
 import com.bosh.jetpackdemo.R
 import com.bosh.jetpackdemo.databinding.FragmentHomeBinding
 import com.bosh.jetpackdemo.extension.bindView
@@ -52,6 +53,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         }
                     }
                 })
+        }
+        binding.tvBox.setOnClickListener {
+            startActivity(Intent(activity, JboxTwodActivity::class.java))
         }
     }
 }

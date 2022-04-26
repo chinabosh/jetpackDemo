@@ -27,3 +27,4 @@ dependencyResolutionManagement {
 rootProject.name = "jetpackDemo"
 include ':app'
 include ':player_lib'
+include ':jbox2d'
