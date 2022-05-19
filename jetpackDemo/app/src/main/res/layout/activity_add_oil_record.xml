@@ -26,6 +26,17 @@
             style="@style/title_text"
             android:layout_centerInParent="true"/>
 
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_add"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"/>
+
     </RelativeLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +59,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
-            android:id="@+id/tv_init_mile"
+            android:id="@+id/et_init_mile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/hint_init_mile"
@@ -227,6 +238,23 @@
             android:text="@string/text_mile_unit"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_mile_label"/>
+
+        <TextView
+            android:id="@+id/tv_oil_left_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_oil_left"
+            android:layout_marginTop="15dp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_cur_oil_label"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mile_label"/>
+
+        <EditText
+            android:id="@+id/et_oil_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_please_input_left_oil"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_oil_left_label"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

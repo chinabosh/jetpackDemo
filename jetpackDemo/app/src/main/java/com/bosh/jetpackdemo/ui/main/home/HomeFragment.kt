@@ -12,6 +12,7 @@ import com.bosh.jboxtwod.JboxTwodActivity
 import com.bosh.jetpackdemo.R
 import com.bosh.jetpackdemo.databinding.FragmentHomeBinding
 import com.bosh.jetpackdemo.extension.bindView
+import com.bosh.jetpackdemo.ui.oil.add.AddOilRecordActivity
 import com.bosh.jetpackdemo.ui.oil.price.OilPriceActivity
 import com.bosh.jetpackdemo.utils.LogUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,7 +32,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             viewModel.randomText()
         }
         binding.tvOilPrice.setOnClickListener {
-            startActivity(Intent(activity, OilPriceActivity::class.java))
+//            startActivity(Intent(activity, OilPriceActivity::class.java))
+            startActivity(Intent(activity, AddOilRecordActivity::class.java))
         }
         viewModel.text.observe(this, {
             binding.etTest.setText(it)

@@ -94,7 +94,7 @@ class OilPriceActivity : AppCompatActivity() {
             }
         }
         lifecycleScope.launchWhenCreated {
-            val request = PeriodicWorkRequestBuilder<OilPriceWorker>(2, TimeUnit.HOURS)
+            val request = PeriodicWorkRequestBuilder<OilPriceWorker>(6, TimeUnit.HOURS)
                 .addTag("test")
                 .build()
             WorkManager.getInstance(this@OilPriceActivity)
