@@ -89,6 +89,7 @@ dependencies {
 
     implementation 'androidx.multidex:multidex:2.0.1'
 
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.6"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
 
     // ViewModel

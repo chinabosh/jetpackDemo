@@ -31,10 +31,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.tvRandom.setOnClickListener{
             viewModel.randomText()
         }
-        binding.tvOilPrice.setOnClickListener {
-//            startActivity(Intent(activity, OilPriceActivity::class.java))
-            startActivity(Intent(activity, AddOilRecordActivity::class.java))
-        }
         viewModel.text.observe(this, {
             binding.etTest.setText(it)
         })
