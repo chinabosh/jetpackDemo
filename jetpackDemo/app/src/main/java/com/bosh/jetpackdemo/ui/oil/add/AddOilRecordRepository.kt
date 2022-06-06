@@ -12,8 +12,15 @@ import javax.inject.Inject
  */
 class AddOilRecordRepository @Inject constructor(
     private val db: AppDatabase
-){
+) {
     fun getInitData(): Flow<OilHistory?> {
         return flow { emit(db.oilHistory().getInitOilInfo()) }
+    }
+
+    fun insertData(oilHistory: OilHistory): Flow<String> {
+        return flow {
+            db.oilHistory().insert(oilHistory)
+            emit("success")
+        }
     }
 }

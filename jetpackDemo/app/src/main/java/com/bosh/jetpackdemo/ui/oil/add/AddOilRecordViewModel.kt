@@ -7,6 +7,7 @@ import com.bosh.jetpackdemo.utils.DateUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -19,6 +20,7 @@ class AddOilRecordViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _initInfo: MutableLiveData<Int> = MutableLiveData()
+
     /** 是否第一次记录加油 */
     private var isInit: Boolean = true
     private lateinit var info: OilHistory
@@ -46,6 +48,11 @@ class AddOilRecordViewModel @Inject constructor(
 
     private val _date: MutableLiveData<String> = MutableLiveData()
     val date = _date.asFlow()
+
+    private val _errorMsg: MutableLiveData<String> = MutableLiveData()
+    val errorMsg = _errorMsg.asFlow()
+    private val _successMsg: MutableLiveData<String> = MutableLiveData()
+    val successMsg = _successMsg.asFlow()
 
     fun getInitData() {
         _initInfo.postValue(0)
@@ -90,5 +97,50 @@ class AddOilRecordViewModel @Inject constructor(
 
     fun setDate(date: String) {
         _date.postValue(date)
+    }
+
+    fun addRecord(
+        mileText: String,
+        addOilText: String,
+        addPriceText: String,
+        timeText: String,
+        oilLeftText: String
+    ) {
+        if (mileText.isEmpty()) {
+            _errorMsg.postValue("请输入里程！")
+            return
+        }
+        if (addOilText.isEmpty()) {
+            _errorMsg.postValue("请输入加油量！")
+            return
+        }
+        if (addPriceText.isEmpty()) {
+            _errorMsg.postValue("请输入油价")
+            return
+        }
+        if (oilLeftText.isEmpty()) {
+            _errorMsg.postValue("请输入剩余油量")
+            return
+        }
+        val mile = mileText.toInt()
+        val addOil = addOilText.toDouble()
+        val addPrice = addPriceText.toDouble()
+        val oilLeft = oilLeftText.toDouble()
+        val oilHistory =
+            OilHistory(
+                isInit = isInit,
+                mile = mile,
+                addOil = addOil,
+                addPrice = addPrice,
+                time = timeText,
+                OilLeft = oilLeft
+            )
+        viewModelScope.launch(Dispatchers.IO) {
+            repo.insertData(oilHistory)
+                .collectLatest {
+                    _successMsg.postValue(it)
+                }
+        }
+
     }
 }

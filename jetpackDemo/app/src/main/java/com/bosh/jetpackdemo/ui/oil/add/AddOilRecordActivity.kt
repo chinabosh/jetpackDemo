@@ -2,6 +2,7 @@ package com.bosh.jetpackdemo.ui.oil.add
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
@@ -53,8 +54,10 @@ class AddOilRecordActivity : AppCompatActivity() {
                 binding.etOil.setText(it)
             }
             binding.etOilPrice.addTextChangedListener {
-                viewModel.setPrice(it.toString(), binding.etOil.text.toString(),
-                    binding.etAmount.text.toString())
+                viewModel.setPrice(
+                    it.toString(), binding.etOil.text.toString(),
+                    binding.etAmount.text.toString()
+                )
             }
             viewModel.amount.collectLatest {
                 binding.etAmount.setText(it)
@@ -71,15 +74,24 @@ class AddOilRecordActivity : AppCompatActivity() {
                 val datePicker = DatePicker(context, DatePicker.YEAR_MONTH_DAY)
                 //setSelectedItem必须放在setRangeEnd后
                 datePicker.setRangeStart(2020, 1, 1)
-                datePicker.setRangeEnd(getCurrentDate()[0] + 1, getCurrentDate()[1],
-                    getCurrentDate()[2])
-                datePicker.setSelectedItem(getCurrentDate()[0], getCurrentDate()[1],
-                    getCurrentDate()[2])
-                datePicker.setTopBackgroundColor(ContextCompat.getColor(context, R.color.purple_700))
+                datePicker.setRangeEnd(
+                    getCurrentDate()[0] + 1, getCurrentDate()[1],
+                    getCurrentDate()[2]
+                )
+                datePicker.setSelectedItem(
+                    getCurrentDate()[0], getCurrentDate()[1],
+                    getCurrentDate()[2]
+                )
+                datePicker.setTopBackgroundColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.purple_700
+                    )
+                )
                 datePicker.setCancelTextColor(ContextCompat.getColor(context, R.color.white))
                 datePicker.setTitleTextColor(ContextCompat.getColor(context, R.color.white))
                 datePicker.setSubmitTextColor(ContextCompat.getColor(context, R.color.white))
-                datePicker.setOnDatePickListener(object:DatePicker.OnYearMonthDayPickListener{
+                datePicker.setOnDatePickListener(object : DatePicker.OnYearMonthDayPickListener {
                     override fun onDatePicked(year: String?, month: String?, day: String?) {
                         val date = "$year-$month-$day"
                         viewModel.setDate(date)
@@ -87,7 +99,21 @@ class AddOilRecordActivity : AppCompatActivity() {
                 })
             }
             binding.tvAdd.setOnClickListener {
+                viewModel.addRecord(
+                    mileText = binding.etMile.text.toString(),
+                    addOilText = binding.etOil.text.toString(),
+                    addPriceText = binding.etOilPrice.text.toString(),
+                    timeText = binding.tvDate.text.toString(),
+                    oilLeftText = binding.etOilLeft.text.toString()
+                )
+            }
 
+            viewModel.errorMsg.collectLatest {
+                Toast.makeText(this@AddOilRecordActivity, it, Toast.LENGTH_SHORT).show()
+            }
+            viewModel.successMsg.collectLatest {
+                Toast.makeText(this@AddOilRecordActivity, it, Toast.LENGTH_SHORT).show()
+                finish()
             }
         }
     }

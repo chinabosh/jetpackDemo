@@ -9,8 +9,6 @@ import androidx.room.PrimaryKey
  */
 @Entity(tableName = "oil_history")
 data class OilHistory(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long,
     /**
      * 是否初始数据
      */
@@ -20,4 +18,6 @@ data class OilHistory(
     var addOil: Double,
     var addPrice: Double,
     var time: String,
-)
+) {
+    @PrimaryKey(autoGenerate = true) var id: Long = 0
+}
