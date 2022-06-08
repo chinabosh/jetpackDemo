@@ -63,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/hint_init_mile"
+            android:gravity="right"
             android:inputType="number"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_init_mile_label"
             app:layout_constraintRight_toLeftOf="@+id/tv_init_mile_unit"
@@ -91,7 +92,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/hint_input_init_oil"
-            android:inputType="number"
+            android:gravity="right"
+            android:inputType="numberDecimal"
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_init_oil_label"
             app:layout_constraintRight_toLeftOf="@+id/tv_init_oil_unit"
             />
@@ -127,8 +129,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/hint_oil"
-            android:inputType="number"
-            android:textSize="20sp"
+            android:inputType="numberDecimal"
+            android:textSize="16sp"
             android:layout_marginTop="10dp"
             app:layout_constraintLeft_toLeftOf="@+id/tv_cur_oil_label"
             app:layout_constraintTop_toBottomOf="@+id/tv_cur_oil_label"/>
@@ -138,7 +140,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/text_oil_unit"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@+id/et_oil"
             app:layout_constraintBaseline_toBaselineOf="@+id/et_oil"/>
 
@@ -147,7 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/text_multi"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:layout_marginLeft="15dp"
             app:layout_constraintLeft_toRightOf="@+id/tv_oil_unit"
             app:layout_constraintBaseline_toBaselineOf="@+id/et_oil"/>
@@ -156,7 +158,7 @@
             android:id="@+id/et_oil_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:hint="@string/hint_input_oil_price"
             android:layout_marginLeft="15dp"
             app:layout_constraintLeft_toRightOf="@+id/tv_multi"
@@ -167,7 +169,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="元/L"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@+id/et_oil_price"
             app:layout_constraintBaseline_toBaselineOf="@+id/et_oil"/>
 
@@ -185,8 +187,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="总价(自动计算)"
-            android:inputType="number"
-            android:textSize="20sp"
+            android:inputType="numberDecimal"
+            android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@+id/tv_equal"
             app:layout_constraintBaseline_toBaselineOf="@+id/et_oil"/>
         <TextView
@@ -228,6 +230,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/hint_please_input_cur_mile"
+            android:gravity="right"
+            android:inputType="number"
             app:layout_constraintRight_toLeftOf="@+id/tv_mile_unit"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_mile_label"/>
 
@@ -254,6 +258,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/hint_please_input_left_oil"
+            android:inputType="numberDecimal"
+            android:gravity="right"
             app:layout_constraintRight_toLeftOf="@+id/tv_oil_left_unit"
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_oil_left_label"/>
 

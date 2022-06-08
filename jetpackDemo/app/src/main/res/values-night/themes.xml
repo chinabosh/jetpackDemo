@@ -15,6 +15,7 @@
         <item name="android:windowBackground">@color/background_night</item>
         <item name="android:textColor">@color/gray_333333</item>
         <item name="android:textColorHint">@color/gray_666666</item>
+        <item name="android:editTextColor">@color/purple_700</item>
     </style>
     <style name="Theme.AppSplashScreen" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/purple_700</item>

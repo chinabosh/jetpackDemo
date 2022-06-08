@@ -170,3 +170,7 @@ dependencies {
     androidTestImplementation("androidx.work:work-testing:2.7.1")
 
 }
+
+kapt {
+    useBuildCache = true
+}

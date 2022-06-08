@@ -21,6 +21,9 @@ class AddOilRecordViewModel @Inject constructor(
 
     private val _initInfo: MutableLiveData<Int> = MutableLiveData()
 
+    private var isOilChange = false
+    private var isAmountChange = false
+
     /** 是否第一次记录加油 */
     private var isInit: Boolean = true
     private lateinit var info: OilHistory
@@ -38,65 +41,102 @@ class AddOilRecordViewModel @Inject constructor(
     private val _initOil: MutableLiveData<Double> = MutableLiveData()
 
     private val _oil: MutableLiveData<Double> = MutableLiveData()
-    val oil = _oil.asFlow().map {
+    val oil = _oil.map {
         String.format("%.2f", it)
     }
     private val _amount: MutableLiveData<Double> = MutableLiveData()
-    val amount = _amount.asFlow().map {
+    val amount = _amount.map {
         String.format("%.2f", it)
     }
 
     private val _date: MutableLiveData<String> = MutableLiveData()
-    val date = _date.asFlow()
+    val date = _date
 
     private val _errorMsg: MutableLiveData<String> = MutableLiveData()
-    val errorMsg = _errorMsg.asFlow()
+    val errorMsg: LiveData<String>
+        get() = _errorMsg
     private val _successMsg: MutableLiveData<String> = MutableLiveData()
-    val successMsg = _successMsg.asFlow()
+    val successMsg: LiveData<String>
+        get() = _successMsg
 
     fun getInitData() {
         _initInfo.postValue(0)
-        _date.postValue(DateUtils.getCurDay())
+        _date.value = DateUtils.getCurDay()
     }
 
     fun setInitMile(text: String) {
-        _initMile.value = text.toDouble()
+        if (text.isNotEmpty()) {
+            _initMile.value = text.toDouble()
+        } else {
+            _initMile.value = 0.0
+        }
     }
 
     fun setInitOil(text: String) {
-        _initOil.value = text.toDouble()
+        if (text.isNotEmpty()) {
+            _initOil.value = text.toDouble()
+        } else {
+            _initOil.value = 0.0
+        }
     }
 
     fun setOil(oilText: String, priceText: String) {
-        val oil = oilText.toDouble()
+        if (isOilChange) {
+            return
+        }
+        val oil = if (oilText.isNotEmpty()) {
+            oilText.toDouble()
+        } else {
+            0.0
+        }
         if (priceText.isNotEmpty()) {
             val amount = oil * priceText.toDouble()
-            _amount.postValue(amount)
+            setAmount(amount)
         }
     }
 
     fun setPrice(priceText: String, oilText: String, amountText: String) {
         if (priceText.isNotEmpty()) {
-            if (oilText.isNotEmpty() && amountText.isEmpty()) {
+            if (oilText.isNotEmpty()) {
                 val amount = oilText.toDouble() * priceText.toDouble()
-                _amount.postValue(amount)
+                setAmount(amount)
             }
             if (oilText.isEmpty() && amountText.isNotEmpty()) {
                 val oil = amountText.toDouble() / priceText.toDouble()
-                _oil.postValue(oil)
+                setOil(oil)
             }
         }
     }
 
     fun setAmount(priceText: String, amountText: String) {
+        if (isAmountChange) {
+            return
+        }
         if (priceText.isNotEmpty()) {
-            val oil = amountText.toDouble() / priceText.toDouble()
-            _oil.postValue(oil)
+            val amount = if (amountText.isEmpty()) {
+                0.0
+            } else {
+                amountText.toDouble()
+            }
+            val oil = amount / priceText.toDouble()
+            setOil(oil)
         }
     }
 
+    private fun setAmount(double: Double) {
+        isAmountChange = true
+        _amount.value = double
+        isAmountChange = false
+    }
+
+    private fun setOil(double: Double) {
+        isOilChange = true
+        _oil.value = double
+        isOilChange = false
+    }
+
     fun setDate(date: String) {
-        _date.postValue(date)
+        _date.value = date
     }
 
     fun addRecord(
@@ -107,19 +147,19 @@ class AddOilRecordViewModel @Inject constructor(
         oilLeftText: String
     ) {
         if (mileText.isEmpty()) {
-            _errorMsg.postValue("请输入里程！")
+            _errorMsg.value = "请输入里程！"
             return
         }
         if (addOilText.isEmpty()) {
-            _errorMsg.postValue("请输入加油量！")
+            _errorMsg.value = "请输入加油量！"
             return
         }
         if (addPriceText.isEmpty()) {
-            _errorMsg.postValue("请输入油价")
+            _errorMsg.value = "请输入油价"
             return
         }
         if (oilLeftText.isEmpty()) {
-            _errorMsg.postValue("请输入剩余油量")
+            _errorMsg.value = "请输入剩余油量"
             return
         }
         val mile = mileText.toInt()
