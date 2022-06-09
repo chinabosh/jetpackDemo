@@ -35,4 +35,7 @@
     <string name="text_add">添加</string>
     <string name="text_oil_left">剩余油量</string>
     <string name="hint_please_input_left_oil">请输入剩余油量</string>
+    <string name="text_add_oil_history">加油历史记录</string>
+    <string name="text_hundred_oil">百公里油耗</string>
+    <string name="text_month_average_oil">月均油耗</string>
 </resources>

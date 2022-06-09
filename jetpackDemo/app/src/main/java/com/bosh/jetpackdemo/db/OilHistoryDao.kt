@@ -17,4 +17,7 @@ interface OilHistoryDao {
 
     @Insert
     fun insert(vararg oilHistory: OilHistory)
+
+    @Query("select * from oil_history order by time")
+    fun getAll(): List<OilHistory>
 }

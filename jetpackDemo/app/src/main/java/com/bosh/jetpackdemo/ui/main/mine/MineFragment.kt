@@ -14,6 +14,7 @@ import com.bosh.jetpackdemo.databinding.FragmentMineBinding
 import com.bosh.jetpackdemo.extension.bindView
 import com.bosh.jetpackdemo.extension.inflateBinding
 import com.bosh.jetpackdemo.ui.oil.add.AddOilRecordActivity
+import com.bosh.jetpackdemo.ui.oil.history.AddOilHistoryActivity
 import com.bosh.jetpackdemo.ui.oil.price.OilPriceActivity
 import com.chad.library.adapter.base.listener.OnItemClickListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,6 +38,7 @@ class MineFragment : Fragment(R.layout.fragment_mine) {
                 when (position) {
                     0 -> startActivity(Intent(activity, OilPriceActivity::class.java))
                     1 -> startActivity(Intent(activity, AddOilRecordActivity::class.java))
+                    2 -> startActivity(Intent(activity, AddOilHistoryActivity::class.java))
                 }
             }
             binding.rvFunction.adapter = mAdapter

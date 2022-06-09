@@ -90,4 +90,16 @@ object DateUtils {
         }
         return -1
     }
+
+    fun calcDay(dateStart: String, dateEnd: String): Int {
+        try {
+            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
+            val start = sdf.parse(dateStart)!!
+            val end = sdf.parse(dateEnd)!!
+            return ((end.time - start.time) / 86400000L).toInt()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return 0
+    }
 }
