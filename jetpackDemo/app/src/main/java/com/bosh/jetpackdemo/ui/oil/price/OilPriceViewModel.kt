@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
+import com.bosh.jetpackdemo.utils.DateUtils
+import com.bosh.jetpackdemo.utils.Mapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -27,8 +29,14 @@ class OilPriceViewModel @Inject constructor(
         oilRepository.getTodayOilPrice(it.day, it.prov).flowOn(Dispatchers.IO)
     }.cachedIn(viewModelScope)
 
+    fun getInitFilter(): Filter {
+        val curDay = DateUtils.getCurDay()
+        val prov = oilRepository.getDefaultProvince()
+        return Filter(curDay, prov)
+    }
+
     fun changeFilter(filter: Filter) {
-        if (filter.prov == "全部") {
+        if (filter.prov == Mapper.PROVINCE_ALL) {
             filter.prov = ""
         }
         _filter.postValue(filter)

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             style="@style/title_text"
-            android:text="油价"/>
+            android:text="@string/text_oil_price"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_filter"

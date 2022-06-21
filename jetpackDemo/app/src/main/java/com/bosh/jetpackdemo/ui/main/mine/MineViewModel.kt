@@ -17,5 +17,6 @@ class MineViewModel @Inject constructor() : ViewModel() {
         functionItems.add(FunctionItem("今日油价"))
         functionItems.add(FunctionItem("加油"))
         functionItems.add(FunctionItem("加油记录"))
+        functionItems.add(FunctionItem("设置"))
     }
 }

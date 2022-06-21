@@ -79,11 +79,9 @@ class OilPriceActivity : AppCompatActivity() {
             }
         }
         lifecycleScope.launchWhenCreated {
-            val curDay = DateUtils.getCurDay()
-            binding.layoutFilter.tvDate.text = curDay
-            val prov = "福建"
-            binding.layoutFilter.tvProvince.text = prov
-            filter = Filter(curDay, prov)
+            filter = viewModel.getInitFilter()
+            binding.layoutFilter.tvDate.text = filter.day
+            binding.layoutFilter.tvProvince.text = filter.prov
             viewModel.changeFilter(filter)
         }
 
@@ -94,20 +92,5 @@ class OilPriceActivity : AppCompatActivity() {
                 mAdapter.submitData(it)
             }
         }
-        val request = PeriodicWorkRequestBuilder<OilPriceWorker>(6, TimeUnit.HOURS)
-            .setConstraints(
-                Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED)
-                    .setRequiresBatteryNotLow(true)
-                    .setRequiresCharging(false)
-                    .setRequiresStorageNotLow(false)
-                    .build()
-            )
-            .addTag("test")
-            .build()
-        WorkManager.getInstance(this@OilPriceActivity)
-            .enqueueUniquePeriodicWork(
-                "oil_price",
-                ExistingPeriodicWorkPolicy.KEEP, request
-            )
     }
 }

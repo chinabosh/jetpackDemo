@@ -5,9 +5,12 @@ package com.bosh.jetpackdemo.utils
  * @date  2022/3/8
  */
 object Mapper {
+
+    const val PROVINCE_ALL = "全部"
+
     fun getOilProvince(): List<String> {
         return arrayListOf(
-            "全部",
+            PROVINCE_ALL,
             "北京",
             "上海",
             "江苏",

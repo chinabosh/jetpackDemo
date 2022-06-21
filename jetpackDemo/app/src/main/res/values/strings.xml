@@ -26,7 +26,7 @@
     <string name="text_cur_add_oil_info">本次加油</string>
     <string name="hint_oil">0.00</string>
     <string name="text_multi">x</string>
-    <string name="hint_input_oil_price">油价</string>
+    <string name="text_oil_price">油价</string>
     <string name="text_equal">=</string>
     <string name="text_yuan">元</string>
     <string name="text_add_oil_date">加油日期</string>
@@ -38,4 +38,6 @@
     <string name="text_add_oil_history">加油历史记录</string>
     <string name="text_hundred_oil">百公里油耗</string>
     <string name="text_month_average_oil">月均油耗</string>
+    <string name="text_setting">设置</string>
+    <string name="text_default_province">默认省份</string>
 </resources>

@@ -5,6 +5,7 @@ import com.bosh.jetpackdemo.db.AppDatabase
 import com.bosh.jetpackdemo.entity.OilPrice
 import com.bosh.jetpackdemo.ext.paging.globalPageConfig
 import com.bosh.jetpackdemo.net.ServiceManager
+import com.bosh.jetpackdemo.repository.SpRepository
 import com.bosh.jetpackdemo.utils.DateUtils
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -15,7 +16,8 @@ import javax.inject.Inject
  */
 class OilRepository @Inject constructor(
     private val localDataSource: OilLocalDataSource,
-    private val remoteDataSource: OilRemoteDataSource
+    private val remoteDataSource: OilRemoteDataSource,
+    private val spRepo: SpRepository
 ) {
     @OptIn(ExperimentalPagingApi::class)
     fun getTodayOilPrice(day: String, city: String): Flow<PagingData<OilPrice>> {
@@ -26,6 +28,7 @@ class OilRepository @Inject constructor(
             localDataSource.getTodayOilPrice(day, city)
         }.flow
     }
+    fun getDefaultProvince() = spRepo.getDefaultProvince()
 }
 
 class OilLocalDataSource @Inject constructor(

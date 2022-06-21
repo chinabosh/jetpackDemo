@@ -159,7 +159,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:hint="@string/hint_input_oil_price"
+            android:hint="@string/text_oil_price"
             android:layout_marginLeft="15dp"
             app:layout_constraintLeft_toRightOf="@+id/tv_multi"
             app:layout_constraintBaseline_toBaselineOf="@+id/et_oil"/>
