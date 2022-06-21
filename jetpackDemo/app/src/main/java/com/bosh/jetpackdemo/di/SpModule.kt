@@ -17,7 +17,7 @@ object SpModule {
 
     @Provides
     @Singleton
-    fun providerSharedPrefence(): SpUtils {
+    fun providerSharedPreference(): SpUtils {
         return SpUtils.instance!!
     }
 }

@@ -40,4 +40,14 @@
     <string name="text_month_average_oil">月均油耗</string>
     <string name="text_setting">设置</string>
     <string name="text_default_province">默认省份</string>
+    <string name="text_back">返回</string>
+    <string name="text_in">进入</string>
+    <string name="text_oil_price_unit">元/L</string>
+    <string name="text_oil_amount_unit">总价(自动计算)</string>
+    <string name="text_test">测试</string>
+    <string name="text_ball">小球</string>
+    <string name="text_92">92号：</string>
+    <string name="text_95">95号：</string>
+    <string name="text_98">98号：</string>
+    <string name="text_0">0号：</string>
 </resources>

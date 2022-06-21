@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
         android:layout_marginLeft="20dp"
-        android:text="测试"
+        android:text="@string/text_test"
         android:padding="@dimen/dp_10"
         android:textSize="18sp"
         android:textColor="@color/purple_200"
@@ -24,7 +24,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:padding="10dp"
-        android:text="小球"
+        android:text="@string/text_ball"
         android:textSize="18sp"
         android:textColor="@color/purple_200"
         android:background="@drawable/bg_white_corner"/>

@@ -168,7 +168,7 @@
             android:id="@+id/tv_oil_price_unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="元/L"
+            android:text="@string/text_oil_price_unit"
             android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@+id/et_oil_price"
             app:layout_constraintBaseline_toBaselineOf="@+id/et_oil"/>
@@ -186,7 +186,7 @@
             android:id="@+id/et_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="总价(自动计算)"
+            android:hint="@string/text_oil_amount_unit"
             android:inputType="numberDecimal"
             android:textSize="16sp"
             app:layout_constraintLeft_toRightOf="@+id/tv_equal"
