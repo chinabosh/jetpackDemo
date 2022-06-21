@@ -7,11 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
+import androidx.work.*
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.datetime.datePicker
+import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.bosh.jetpackdemo.databinding.ActivityOilPriceBinding
 import com.bosh.jetpackdemo.extension.inflate
@@ -55,13 +54,15 @@ class OilPriceActivity : AppCompatActivity() {
             }
         }
         binding.layoutFilter.tvProvince.setOnClickListener {
-            MaterialDialog(this@OilPriceActivity)
+            MaterialDialog(this)
+                .lifecycleOwner(this)
                 .listItemsSingleChoice(items = Mapper.getOilProvince()) { _, _, text ->
                     binding.layoutFilter.tvProvince.text = text
                 }.show()
         }
         binding.layoutFilter.tvDate.setOnClickListener {
-            MaterialDialog(this@OilPriceActivity)
+            MaterialDialog(this)
+                .lifecycleOwner(this)
                 .datePicker(
                     maxDate = Calendar.getInstance(),
                     currentDate = Calendar.getInstance()
@@ -93,13 +94,20 @@ class OilPriceActivity : AppCompatActivity() {
                 mAdapter.submitData(it)
             }
         }
-        lifecycleScope.launchWhenCreated {
-            val request = PeriodicWorkRequestBuilder<OilPriceWorker>(6, TimeUnit.HOURS)
-                .addTag("test")
-                .build()
-            WorkManager.getInstance(this@OilPriceActivity)
-                .enqueueUniquePeriodicWork("oil_price",
-                    ExistingPeriodicWorkPolicy.REPLACE, request)
-        }
+        val request = PeriodicWorkRequestBuilder<OilPriceWorker>(6, TimeUnit.HOURS)
+            .setConstraints(
+                Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED)
+                    .setRequiresBatteryNotLow(true)
+                    .setRequiresCharging(false)
+                    .setRequiresStorageNotLow(false)
+                    .build()
+            )
+            .addTag("test")
+            .build()
+        WorkManager.getInstance(this@OilPriceActivity)
+            .enqueueUniquePeriodicWork(
+                "oil_price",
+                ExistingPeriodicWorkPolicy.KEEP, request
+            )
     }
 }

@@ -11,6 +11,8 @@ import com.bosh.jetpackdemo.utils.DateUtils
 import com.bosh.jetpackdemo.utils.LogUtils
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /**
  * 定时任务获取油价
@@ -18,31 +20,33 @@ import dagger.assisted.AssistedInject
  * @date  2022/3/9
  */
 @HiltWorker
-public class OilPriceWorker @AssistedInject  constructor(
+class OilPriceWorker @AssistedInject  constructor(
     @Assisted context: Context,
     @Assisted parameters: WorkerParameters,
     private val db : AppDatabase,
     private val serviceManager: ServiceManager
 ) : CoroutineWorker(context, parameters) {
     override suspend fun doWork(): Result {
-        Log.i("oilPriceWorker", "doWork")
-        LogUtils.i2File("oilPriceWorker", "doWork")
-        val curDay = DateUtils.getCurDay()
-        val data = db.oilDao().getOilPrice(curDay)
-        if (data.isEmpty()) {
-            Log.i("oilPriceWorker", "get from remote")
-            LogUtils.i2File("oilPriceWorker", "get from remote")
-            val wrapper = serviceManager.oilService.getTodayOilPrice()
-            if (wrapper.error_code == 0) {
-                wrapper.result.forEach {
-                    it.time = curDay
+        return withContext(Dispatchers.IO) {
+            Log.i("oilPriceWorker", "doWork")
+            LogUtils.i2File("oilPriceWorker", "doWork")
+            val curDay = DateUtils.getCurDay()
+            val data = db.oilDao().getOilPrice(curDay)
+            if (data.isEmpty()) {
+                Log.i("oilPriceWorker", "get from remote")
+                LogUtils.i2File("oilPriceWorker", "get from remote")
+                val wrapper = serviceManager.oilService.getTodayOilPrice()
+                if (wrapper.error_code == 0) {
+                    wrapper.result.forEach {
+                        it.time = curDay
+                    }
+                    db.oilDao().insertAll(wrapper.result)
+                } else {
+                    Result.failure()
                 }
-                db.oilDao().insertAll(wrapper.result)
-            } else {
-                Result.failure()
             }
+            Result.success()
         }
-        return Result.success()
     }
 
 }

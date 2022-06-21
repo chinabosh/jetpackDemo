@@ -28,6 +28,7 @@ class AddOilHistoryActivity : AppCompatActivity() {
     private fun init() {
         binding.rvMain.layoutManager = LinearLayoutManager(this)
         binding.rvMain.adapter = mAdapter
+        binding.ivBack.setOnClickListener { finish() }
 
         viewModel.adapterData.observe(this , {
             mAdapter.notifyDataSetChanged()
