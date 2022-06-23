@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun initWork(context: Context) {
-        val request = PeriodicWorkRequestBuilder<OilPriceWorker>(6, TimeUnit.HOURS)
+        val request = PeriodicWorkRequestBuilder<OilPriceWorker>(30, TimeUnit.MINUTES)
             .setConstraints(
                 Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED)
                     .setRequiresBatteryNotLow(true)
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         WorkManager.getInstance(context)
             .enqueueUniquePeriodicWork(
                 "oil_price",
-                ExistingPeriodicWorkPolicy.KEEP, request
+                ExistingPeriodicWorkPolicy.REPLACE, request
             )
     }
 }

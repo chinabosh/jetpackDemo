@@ -160,7 +160,14 @@ object LogUtils {
         logFiles?.forEach {
             val lastModified = it.lastModified()
             val calendar = Calendar.getInstance()
+            i2File(
+                "LogUtils",
+                "lastModified:${lastModified}, now:${calendar.timeInMillis}, " +
+                        "existTime:${calendar.timeInMillis - lastModified}, " +
+                        "maxTime:${day * ONE_DAY}"
+            )
             if (calendar.timeInMillis - lastModified > day * ONE_DAY) {
+
                 if (!it.delete()) {
                     i2File("LogUtils", it.name + " delete fail")
                 }
