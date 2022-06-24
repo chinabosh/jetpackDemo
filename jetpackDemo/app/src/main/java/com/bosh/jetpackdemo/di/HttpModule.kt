@@ -1,6 +1,8 @@
 package com.bosh.jetpackdemo.di
 
 import com.bosh.jetpackdemo.BuildConfig
+import com.bosh.jetpackdemo.di.qualifier.CommonRetrofit
+import com.bosh.jetpackdemo.di.qualifier.OilRetrofit
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -21,7 +23,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object HttpModule {
 
-    const val url = "https://www.baidu.com"
+    private const val url = "https://www.baidu.com"
 
     @Provides
     @Singleton
@@ -45,11 +47,23 @@ object HttpModule {
             .build()
     }
 
+    @CommonRetrofit
     @Provides
     @Singleton
     fun providerRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(url)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    @OilRetrofit
+    @Provides
+    @Singleton
+    fun providerOilRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl("http://apis.juhe.cn/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

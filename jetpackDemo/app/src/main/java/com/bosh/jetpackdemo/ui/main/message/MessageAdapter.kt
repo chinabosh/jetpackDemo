@@ -3,7 +3,6 @@ package com.bosh.jetpackdemo.ui.main.message
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.viewpager.widget.PagerAdapter
 import com.bosh.jetpackdemo.entity.MessageInfo
 
 /**

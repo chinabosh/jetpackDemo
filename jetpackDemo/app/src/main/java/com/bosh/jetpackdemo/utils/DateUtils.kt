@@ -1,5 +1,6 @@
 package com.bosh.jetpackdemo.utils
 
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -23,5 +24,82 @@ object DateUtils {
             in 24 * 60 * 60 * 1000 + 1 until 2 * 24 * 60 * 60 * 1000 -> "昨天"
             else -> SimpleDateFormat("yy-MM-dd", Locale.CHINA).format(times)
         }
+    }
+
+    fun getCurDay(): String {
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
+        return simpleDateFormat.format(System.currentTimeMillis())
+    }
+
+    fun getDate(dateTime: Calendar): String {
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
+        return simpleDateFormat.format(dateTime.timeInMillis)
+    }
+
+    /**
+     * 从指定的时间字符串中提取年份
+     * @param date
+     * @return
+     */
+    fun getYear(date: String): Int {
+        try {
+            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
+            val calendar = sdf.calendar
+            calendar.time = sdf.parse(date)!!
+            return calendar[Calendar.YEAR]
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return -1
+    }
+
+    /**
+     * 获取当前月份
+     * @return
+     */
+    fun getMonth(date: String): Int {
+        try {
+            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
+            val calendar = sdf.calendar
+            calendar.time = sdf.parse(date)!!
+            return calendar[Calendar.MONTH]
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return -1
+    }
+
+    /**
+     * 获取当月天数
+     * @return
+     */
+    fun getDay(date: String): Int {
+        try {
+            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
+            val calendar = sdf.calendar
+            calendar.time = sdf.parse(date)!!
+            return calendar[Calendar.DAY_OF_MONTH]
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return -1
+    }
+
+    fun calcDay(dateStart: String, dateEnd: String): Int {
+        try {
+            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
+            val start = sdf.parse(dateStart)!!
+            val end = sdf.parse(dateEnd)!!
+            return ((end.time - start.time) / 86400000L).toInt()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return 0
     }
 }

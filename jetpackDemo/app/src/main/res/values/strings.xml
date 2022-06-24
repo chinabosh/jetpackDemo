@@ -10,4 +10,44 @@
     <string name="text_obtain_database_data">获取数据库数据</string>
     <string name="text_prefill_database">预存数据库数据</string>
     <string name="text_obtain_test_data">获取测试数据</string>
+
+    <string name="hint_choose">请选择</string>
+    <string name="text_sure">确定</string>
+    <string name="text_province">省份</string>
+    <string name="text_date">日期</string>
+
+    <string name="text_add_oil">加油</string>
+    <string name="text_init_mile">初始里程</string>
+    <string name="text_mile_unit">km</string>
+    <string name="hint_init_mile">请输入初始里程</string>
+    <string name="text_init_oil">初始油量</string>
+    <string name="hint_input_init_oil">请输入初始油量</string>
+    <string name="text_oil_unit">L</string>
+    <string name="text_cur_add_oil_info">本次加油</string>
+    <string name="hint_oil">0.00</string>
+    <string name="text_multi">x</string>
+    <string name="text_oil_price">油价</string>
+    <string name="text_equal">=</string>
+    <string name="text_yuan">元</string>
+    <string name="text_add_oil_date">加油日期</string>
+    <string name="text_mile">里程</string>
+    <string name="hint_please_input_cur_mile">请输入当前里程</string>
+    <string name="text_add">添加</string>
+    <string name="text_oil_left">剩余油量</string>
+    <string name="hint_please_input_left_oil">请输入剩余油量</string>
+    <string name="text_add_oil_history">加油历史记录</string>
+    <string name="text_hundred_oil">百公里油耗</string>
+    <string name="text_month_average_oil">月均油耗</string>
+    <string name="text_setting">设置</string>
+    <string name="text_default_province">默认省份</string>
+    <string name="text_back">返回</string>
+    <string name="text_in">进入</string>
+    <string name="text_oil_price_unit">元/L</string>
+    <string name="text_oil_amount_unit">总价(自动计算)</string>
+    <string name="text_test">测试</string>
+    <string name="text_ball">小球</string>
+    <string name="text_92">92号：</string>
+    <string name="text_95">95号：</string>
+    <string name="text_98">98号：</string>
+    <string name="text_0">0号：</string>
 </resources>

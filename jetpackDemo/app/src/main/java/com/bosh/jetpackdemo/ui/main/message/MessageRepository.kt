@@ -1,7 +1,6 @@
 package com.bosh.jetpackdemo.ui.main.message
 
 import android.os.Build
-import androidx.annotation.AnyThread
 import androidx.annotation.RequiresApi
 import androidx.annotation.WorkerThread
 import androidx.paging.Pager
@@ -11,9 +10,6 @@ import com.bosh.jetpackdemo.db.AppDatabase
 import com.bosh.jetpackdemo.entity.MessageInfo
 import com.bosh.jetpackdemo.ext.paging.globalPageConfig
 import com.bosh.jetpackdemo.repository.MessageFactory
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import java.lang.Exception
 import java.lang.Integer.min
 import javax.inject.Inject
 
