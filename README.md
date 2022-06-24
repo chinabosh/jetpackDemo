@@ -14,7 +14,7 @@ jetpack
 
 ## 功能模块
 [油价](doc/oil.md)  
-
+[油耗](doc/油耗.md)  
 
 ## 参考项目
 [MVVM-Architecture][MVVM-Architecture]  
