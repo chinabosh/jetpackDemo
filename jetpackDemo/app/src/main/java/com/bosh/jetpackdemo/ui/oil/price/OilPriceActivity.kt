@@ -61,11 +61,14 @@ class OilPriceActivity : AppCompatActivity() {
                 }.show()
         }
         binding.layoutFilter.tvDate.setOnClickListener {
+            val currentCalendar = Calendar.getInstance()
+            val maxCalendar = Calendar.getInstance()
+            maxCalendar.timeInMillis = currentCalendar.timeInMillis + 1000
             MaterialDialog(this)
                 .lifecycleOwner(this)
                 .datePicker(
-                    maxDate = Calendar.getInstance(),
-                    currentDate = Calendar.getInstance()
+                    currentDate = currentCalendar,
+                    maxDate = maxCalendar
                 ) { _, datetime ->
                     binding.layoutFilter.tvDate.text = DateUtils.getDate(datetime)
                 }.show()
