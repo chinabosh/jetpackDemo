@@ -12,10 +12,10 @@ import com.bosh.jetpackdemo.extension.inflate
  */
 abstract class BaseActivity : AppCompatActivity() {
 
-    abstract fun bindView()
+    abstract fun init()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindView()
+        init()
     }
 }

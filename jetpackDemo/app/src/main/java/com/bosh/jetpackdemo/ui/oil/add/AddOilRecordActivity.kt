@@ -17,6 +17,7 @@ import cn.qqtheme.framework.picker.DatePicker
 import com.bosh.jetpackdemo.R
 import com.bosh.jetpackdemo.databinding.ActivityAddOilRecordBinding
 import com.bosh.jetpackdemo.extension.inflate
+import com.bosh.jetpackdemo.ui.base.BaseActivity
 import com.bosh.jetpackdemo.utils.DateUtils
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -24,18 +25,12 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class AddOilRecordActivity : AppCompatActivity() {
+class AddOilRecordActivity : BaseActivity() {
 
     private val binding: ActivityAddOilRecordBinding by inflate()
     private val viewModel: AddOilRecordViewModel by viewModels()
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        init()
-    }
-
-    private fun init() {
+    override fun init() {
         binding.ivBack.setOnClickListener { finish() }
         binding.etInitMile.doAfterTextChanged {
             viewModel.setInitMile(it.toString())

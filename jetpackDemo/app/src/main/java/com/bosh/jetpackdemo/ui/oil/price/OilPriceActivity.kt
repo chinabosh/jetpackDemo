@@ -14,6 +14,7 @@ import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.bosh.jetpackdemo.databinding.ActivityOilPriceBinding
 import com.bosh.jetpackdemo.extension.inflate
+import com.bosh.jetpackdemo.ui.base.BaseActivity
 import com.bosh.jetpackdemo.utils.DateUtils
 import com.bosh.jetpackdemo.utils.Mapper
 import com.bosh.jetpackdemo.work.OilPriceWorker
@@ -25,19 +26,14 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
-class OilPriceActivity : AppCompatActivity() {
+class OilPriceActivity : BaseActivity() {
 
     private val binding: ActivityOilPriceBinding by inflate()
     private val viewModel: OilPriceViewModel by viewModels()
     private lateinit var filter: Filter
     private val mAdapter: OilPriceAdapter = OilPriceAdapter()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        init()
-    }
-
-    private fun init() {
+    override fun init() {
         binding.layoutMain.ivFilter.setOnClickListener {
             binding.dlMain.openDrawer(GravityCompat.END)
         }

@@ -8,21 +8,17 @@ import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.bosh.jetpackdemo.databinding.ActivitySettingBinding
 import com.bosh.jetpackdemo.extension.inflate
+import com.bosh.jetpackdemo.ui.base.BaseActivity
 import com.bosh.jetpackdemo.utils.Mapper
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SettingActivity : AppCompatActivity() {
+class SettingActivity : BaseActivity() {
 
     private val binding: ActivitySettingBinding by inflate()
     private val viewModel: SettingViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        init()
-    }
-
-    private fun init() {
+    override fun init() {
         binding.ivBack.setOnClickListener { finish() }
         binding.tvProvince.setOnClickListener {
             MaterialDialog(this)
