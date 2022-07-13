@@ -50,4 +50,5 @@
     <string name="text_95">95号：</string>
     <string name="text_98">98号：</string>
     <string name="text_0">0号：</string>
+    <string name="text_add_trade_record">添加交易记录</string>
 </resources>

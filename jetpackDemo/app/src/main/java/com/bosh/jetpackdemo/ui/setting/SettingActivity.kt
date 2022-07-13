@@ -3,6 +3,7 @@ package com.bosh.jetpackdemo.ui.setting
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.drawToBitmap
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
@@ -20,6 +21,7 @@ class SettingActivity : BaseActivity() {
 
     override fun init() {
         binding.ivBack.setOnClickListener { finish() }
+        binding.tvProvince.drawToBitmap()
         binding.tvProvince.setOnClickListener {
             MaterialDialog(this)
                 .lifecycleOwner(this)

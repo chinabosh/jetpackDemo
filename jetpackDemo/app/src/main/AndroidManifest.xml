@@ -3,10 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bosh.jetpackdemo">
 
-    <uses-permission android:maxSdkVersion="28" android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:name=".MyApplication"
         android:allowBackup="false"
@@ -17,6 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackDemo"
         tools:targetApi="n">
+        <activity
+            android:name=".ui.shares.list.SharesListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.shares.addshares.AddSharesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.shares.addrecord.AddTradeRecordActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.setting.SettingActivity"
             android:exported="true" />
@@ -67,11 +72,18 @@
                 android:value="androidx.startup"
                 tools:node="remove" />
         </provider>
-
         <provider
+            android:name=".provider.ApplicationContextProvider"
             android:authorities="${applicationId}.bosh_context_provider"
-            android:exported="false"
-            android:name=".provider.ApplicationContextProvider"/>
+            android:exported="false" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
+    <uses-permission android:name="android.permission.STATUS_BAR"/>
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/>
 
 </manifest>
