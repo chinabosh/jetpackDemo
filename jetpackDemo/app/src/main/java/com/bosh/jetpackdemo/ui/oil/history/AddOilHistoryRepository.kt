@@ -16,4 +16,8 @@ class AddOilHistoryRepository @Inject constructor(
     fun getOilHistory(): Flow<List<OilHistory>> {
         return flow { emit(db.oilHistory().getAll()) }
     }
+
+    fun getOilHistoryByDesc(): Flow<List<OilHistory>> {
+        return flow { emit(db.oilHistory().getAllByDesc()) }
+    }
 }

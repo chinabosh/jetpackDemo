@@ -20,4 +20,7 @@ interface OilHistoryDao {
 
     @Query("select * from oil_history order by time")
     fun getAll(): List<OilHistory>
+
+    @Query("select * from oil_history order by time DESC")
+    fun getAllByDesc(): List<OilHistory>
 }

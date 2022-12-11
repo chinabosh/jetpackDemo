@@ -37,17 +37,17 @@ class AddOilHistoryViewModel @Inject constructor(
 
     fun initData() {
         viewModelScope.launch(Dispatchers.IO) {
+            repo.getOilHistoryByDesc()
+                .collectLatest {
+                    records.addAll(it)
+                    _adapterData.postValue(0)
+                }
             repo.getOilHistory()
-                .map {
+                .collectLatest {
                     if (it.size >= 2) {
                         calcHundredOil(it)
                         calcMonthOil(it)
                     }
-                    return@map it
-                }
-                .collectLatest {
-                    records.addAll(it)
-                    _adapterData.postValue(0)
                 }
         }
     }
