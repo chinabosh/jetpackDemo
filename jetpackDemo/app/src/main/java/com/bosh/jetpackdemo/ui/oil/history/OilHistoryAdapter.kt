@@ -15,7 +15,7 @@ class OilHistoryAdapter(data: MutableList<OilHistory>) :
         holder.setText(R.id.tv_time, item.time)
         val amount = String.format("%.2f", item.addOil * item.addPrice)
         holder.setText(R.id.tv_add_oil, "${item.addOil}L x ${item.addPrice}元 = ${amount}元")
-        holder.setText(R.id.tv_mile, "里程：${item.mile}米")
+        holder.setText(R.id.tv_mile, "里程：${item.mile}km")
         holder.setText(R.id.tv_oil_left, "剩余油量：${item.OilLeft}L")
     }
 }
