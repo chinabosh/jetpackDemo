@@ -21,7 +21,7 @@ class SettingActivity : BaseActivity() {
 
     override fun init() {
         binding.ivBack.setOnClickListener { finish() }
-        binding.tvProvince.drawToBitmap()
+
         binding.tvProvince.setOnClickListener {
             MaterialDialog(this)
                 .lifecycleOwner(this)
